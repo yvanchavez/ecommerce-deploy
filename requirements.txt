@@ -1,0 +1,21 @@
+asgiref==3.2.10
+certifi==2020.6.20
+chardet==3.0.4
+Django==3.0.8
+django-cors-headers==3.4.0
+django-crispy-forms==1.9.2
+django-jsonfield==1.4.0
+django-rest-authtoken==1.2.4
+django-stripe-payments==2.0.0
+django-widgets-improved==1.5.0
+djangorestframework==3.11.0
+idna==2.10
+mysqlclient @ file:///D:/codiGo%20Backend/1-python/semana4/day17/ecommerce/mysqlclient-1.4.4-cp38-cp38-win32.whl
+Pillow==7.2.0
+psycopg2==2.8.5
+pytz==2020.1
+requests==2.24.0
+six==1.15.0
+sqlparse==0.3.1
+stripe==2.49.0
+urllib3==1.25.10

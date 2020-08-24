@@ -1,0 +1,42 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row mt-5">
+    <div class="col-md-4">
+       {% if user.foto %}<img  src="{{ user.foto.url }}" class="rounded-circle" alt="" height="300px">{% else %} <i class="fa fa-user fa-5x"></i> {% endif %}
+		 <h3 class="text-center m-3">{{ user.customer.name }}</h3>
+        <p class="mt-4 text-center">Email : {{ user.customer.email }}</p>
+    </div>
+    <div class="col-md-8">
+		<table class="table">
+		<thead >
+			<tr>
+				<th>N° transacción</th>
+				<th>Estado</th>
+				<th>Fecha</th>
+				<th>Monto</th>
+			</tr>
+		</thead>
+		{% for order in orders %}
+			<tr>
+				<td>{{ order.transaction_id }}</td>
+				<td>{% if order.complete %}Completado{% else %} Proceso {% endif %}</td>
+				<td>{{ order.date_ordered }}</td>
+				<td>{{ order.get_cart_total }}</td>
+
+			</tr>
+		{% endfor %}
+	</table>
+    </div>
+</div>
+
+
+<div class="main-container mt-4">
+
+
+
+
+</div>
+{% endblock content %}

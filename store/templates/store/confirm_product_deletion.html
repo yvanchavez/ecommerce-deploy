@@ -1,0 +1,15 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="text-center">
+      <form method="post">
+          {% csrf_token %}
+          <h3 class="delete-msg my-5" style="color:#1F2F7D">¿Esta seguro que quiere eliminar <b>"{{ product.name }}"</b> ?</h3>
+          <a href="{% url 'products' %}" class="btn " style="background:#ADCE0D; color:white">No</a>
+          <button class="btn" type="submit" style="background:#FE490C; color:white">Si</button>
+      </form>
+  </div>
+
+
+{% endblock content %}

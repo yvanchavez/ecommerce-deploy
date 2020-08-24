@@ -1,0 +1,62 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container cart-page">
+	<table>
+		<tr>
+			<th>Producto</th>
+			<th>Cantidad</th>
+			<th>SubTotal</th>
+		</tr>
+		{% for item in items %}
+		<tr>
+			<td>
+				<div class="cart-info">
+					<img src="{{item.product.imageURL}}" alt="" width="100px">
+					<div>
+						<p>{{item.product.name}}</p>
+						<small>Precio: S/.{{item.product.price|floatformat:2}}</small>
+						<br>
+						
+					</div>
+				</div>
+			</td>
+			<td><div style="flex:1">
+						<span class="mr-3 ">{{item.quantity}}</span>
+						<div class="quantity">
+							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+
+							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+						</div>
+					</div>
+			</td>
+			<td>S/.{{item.get_total|floatformat:2}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<div class="total-price">
+		<table>
+<!--			<tr>-->
+<!--				<td>SubTotal</td>-->
+<!--				<td>S/. 200.00</td>-->
+<!--			</tr>-->
+<!--			<tr>-->
+<!--				<td>IGV</td>-->
+<!--				<td>S/. 36.00</td>-->
+<!--			</tr>-->
+			<tr>
+				<td>Total</td>
+				<td>S/. {{order.get_cart_total|floatformat:2}}</td>
+			</tr>
+			<tr>
+				<td><a type="button" class="btn btn-success" href="{% url 'home' %}">Seguir Comprando</a></td>
+				<td><a type="button" class="btn btn-block boton" href="{% url 'checkout' %}">Pagar</a></td>
+
+			</tr>
+		</table>
+	</div>
+</div>
+{% endblock content %}

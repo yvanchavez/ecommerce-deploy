@@ -1,0 +1,46 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col-md-4">
+
+           {% if product.image1 %}<img src="{{ product.image1.url }}"  alt="" height="300px" width="100%">{% else %} <i class="fa fa-user fa-5x"></i> {% endif %}
+
+
+    </div>
+    <div class="col-md-8">
+         <h1 class="mb-3" style="color:#1F2F7D">Producto: {{ product.name}}</h1>
+  <a href="{% url 'products' %}">👈 Back</a>
+  ✏
+  <a href="{% url 'product_update' product.pk %}">Edit</a>
+  😥
+  <a href="{% url 'product_delete' product.pk %}">Delete</a>
+  <hr/>
+
+   <p>
+       Nombre de Producto : {{ product.name }}
+
+   </p>
+
+   <p>
+       Precio del producto:
+       {% if product.price %}
+          S/. {{ product.price }}
+       {% else %}
+          The producto not price 🤔🤔
+       {% endif %}
+   </p>
+
+    <p>
+       🐱‍🏍 Categorias: {% for category in product.categories.all %} {{category}} {% endfor %}
+    </p>
+
+
+
+    </div>
+</div>
+
+
+
+{% endblock content %}

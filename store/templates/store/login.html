@@ -1,0 +1,26 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto contenedor-auth text-center">
+        <h3>Iniciar Sesión</h3>
+        <p >Ingresa tu correo y contraseña</p>
+        <form method = POST>
+             {% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="id_username" name="username" aria-describedby="emailHelp"
+                       placeholder="Username">
+
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="id_password" name="password" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block">Login</button>
+        </form>
+        <p>¿Nuevo en Dr. Pet's? <a href="{% url 'registrate' %}">Regístrate</a></p>
+        <a href="{% url 'resetpassword' %}">¿Olvidaste tu contraseña?</a>
+    </div>
+</div>
+{% endblock content %}

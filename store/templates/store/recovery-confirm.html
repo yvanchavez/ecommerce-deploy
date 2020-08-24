@@ -1,0 +1,17 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto contenedor-recovery-confirm ">
+        <h3>Recuperar contraseña</h3>
+        <p class="text-center">Se acaba de enviar un correo electrónico para recuperar su contraseña.</p>
+<p>Para crear una nueva contraseña, acceda al enlace:
+    <a href="http://127.0.0.1:8000{% url 'core:password_reset_confirm' reset.key %}"
+       title="Crear nuevo enlace de contraseña">Crear Nueva Contraseña</a>
+</p>
+        <button type="submit" class="btn btn-success btn-block ">Aceptar</button>
+
+
+    </div>
+</div>
+{% endblock content %}

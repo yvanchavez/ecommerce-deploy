@@ -1,0 +1,60 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<form method="get" action="/search/">
+    <div class="row my-2">
+        <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Buscar producto" name="q" value="{{ query }}"/>
+              </div>
+        </div>
+        <div class="col-md-2">
+                <div class="form-group">
+                    <select class="form-control" id="exampleFormControlSelect1" name="category">
+                        <option value="0" />Todos</option>
+                         {% for category in categories %}
+                             <option value="{{category.id}}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        </div>
+        <div class="col-md-2">
+
+            <input type="submit" value="Buscar" class="btn btn-outline-info btn-block"/></p>
+        </div>
+    </div>
+
+
+
+
+</form>
+
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-3 col-sm-6 my-3">
+        <div class="product-grid">
+            <div class="product-image">
+                <a href="#">
+                    {% if product.image1 %} <img class="pic-1 " src="{{ product.image1.url }}">{% endif %}
+                    {% if product.image2 %} <img class="pic-2" src="{{ product.image2.url }}"> {% endif %}
+                </a>
+                <span class="product-trend-label">Oferta</span>
+                <ul class="social">
+                    <li><a href="#" data-tip="Agregar al carrito" data-product="{{product.id}}" data-action="add"
+                           class="update-cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="{% url 'detail' product.id %}" data-tip="Ver más"><i class="fa fa-search"></i></a></li>
+                </ul>
+            </div>
+            <div class="product-content">
+                <h3 class="title"><a href="#">{{ product.name }}</a></h3>
+                <div class="price">S./ {{ product.price | floatformat:2 }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

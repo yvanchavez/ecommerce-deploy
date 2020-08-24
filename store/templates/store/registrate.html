@@ -1,0 +1,33 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto contenedor-auth text-center">
+        <h3>Regístrate</h3>
+        <p>Regístrate y recibe cupones y ofertas</p>
+        <form method="post">
+            {% csrf_token %}
+
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="id_username" name="username" aria-describedby="emailHelp"
+                       placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="id_email" name="email" aria-describedby="emailHelp"
+                       placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="id_password1" name="password1" aria-describedby="emailHelp"
+                       placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="id_password2" name="password2" placeholder="Confirmar password">
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block mb-5">Registrarse</button>
+        </form>
+
+    </div>
+</div>
+{% endblock content %}
