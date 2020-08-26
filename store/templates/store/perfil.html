@@ -4,12 +4,12 @@
 
 
 <div class="row mt-5">
-    <div class="col-md-4">
+    <div class=" col-lg-4 text-center">
        {% if user.foto %}<img  src="{{ user.foto.url }}" class="rounded-circle" alt="" height="300px">{% else %} <i class="fa fa-user fa-5x"></i> {% endif %}
 		 <h3 class="text-center m-3">{{ user.customer.name }}</h3>
         <p class="mt-4 text-center">Email : {{ user.customer.email }}</p>
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8">
 		<table class="table">
 		<thead >
 			<tr>

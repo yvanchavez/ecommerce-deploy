@@ -91,7 +91,7 @@
     </span>
     <span class="carrito">
         <a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a>
-        <p id="cart-total">{{cartItems}}</p>
+        {% if cartItems %}<p id="cart-total">{{cartItems}}</p>{% else %}<p id="cart-total">0</p>{% endif %}
     </span>
 
     <div class="burger">

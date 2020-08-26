@@ -56,16 +56,23 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
-
+    class Meta:
+        verbose_name = "Categoría"
+        verbose_name_plural = "Categorías"
 
 
 class Product(models.Model):
     name = models.CharField("nombre",max_length=200)
+    description =models.TextField('Descripción',null=True, blank=False,default="")
     price = models.DecimalField("Precio",max_digits=7, decimal_places=2)
     categories = models.ManyToManyField(Category,verbose_name=('Categorias'))
     digital = models.BooleanField(default=False, null=True, blank=False)
@@ -73,6 +80,10 @@ class Product(models.Model):
     image2 = models.ImageField("Imagen 2",upload_to="productos", null=True, blank=True)
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Producto"
+        verbose_name_plural = "Productos"
 
     @property
     def imageURL(self):
@@ -85,10 +96,10 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
-    date_ordered = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False)
-    transaction_id = models.CharField(max_length=100, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True,verbose_name="Cliente")
+    date_ordered = models.DateTimeField(auto_now_add=True ,verbose_name="Fecha venta")
+    complete = models.BooleanField(default=False,verbose_name="Estado")
+    transaction_id = models.CharField(max_length=100, null=True,verbose_name="Número de Transacción")
 
     def __str__(self):
         return str(self.id)
@@ -102,17 +113,23 @@ class Order(models.Model):
                 shipping = True
         return shipping
 
-    @property
+
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
+
+    get_cart_total.short_description = 'Monto Total'
 
     @property
     def get_cart_items(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
+
+    class Meta:
+        verbose_name = "Venta"
+        verbose_name_plural = "Ventas"
 
 
 class OrderItem(models.Model):
@@ -121,17 +138,22 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return str(self.product)
+
     @property
     def get_total(self):
         total = self.product.price * self.quantity
         return total
 
-
+    class Meta:
+        verbose_name = "Detalle venta"
+        verbose_name_plural = "Detalles Venta"
 
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    order = models.OneToOneField(Order, on_delete=models.SET_NULL, null=True)
     direccion = models.CharField(max_length=200, null=False)
     provincia = models.CharField(max_length=200, null=False)
     distrito = models.CharField(max_length=200, null=False)
@@ -140,6 +162,9 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return self.direccion
 
+    class Meta:
+        verbose_name = "Dirección de Envío"
+        verbose_name_plural = "Dirección de Envío"
 
 
 

@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #F2F2F2;
+    font-family: 'Lato', sans-serif;
+}
 
 
 .box-element{
@@ -53,17 +65,6 @@
 	display: none!important;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body{
-    background-color: #F2F2F2;
-}
 
 
 
@@ -73,7 +74,6 @@ nav{
     align-items: center;
     min-height: 8vh;
     background-color: #17A6F5;
-    font-family: 'Poppins', sans-serif;
 }
 
 .logo h4{
@@ -99,7 +99,7 @@ nav{
 	text-align: center;
 	color:#fff;
 	background-color: #FE490C;
-	width: 20px;
+	width: 25px;
 	height: 25px;
 	border-radius: 50%;
 	font-size: 14px;
@@ -234,7 +234,6 @@ nav{
         }
 
         .product-grid {
-            font-family: 'Roboto', sans-serif;
             position: relative;
 
 
