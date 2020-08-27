@@ -60,13 +60,6 @@ def search(request):
     return render(request, 'store/store.html', context)
 
 
-def filterCategories(request):
-    ### Get the categories without any parent.
-    q = request.GET['q']
-    categories = Category.objects.filter(parent=None).order_by('name')
-    context = {'kategorie': kategorie}
-    return render(request, 'ogloszenia/index.html', context=context)
-
 
 def cart(request):
     data = cartData(request)
@@ -172,7 +165,7 @@ def processOrder(request):
 def registrate(request):
     template_name = 'store/registrate.html'
     if request.method == 'POST':
-        form = RegistrarForm(request.POST)
+        form = RegistrarForm(request.POST,request.FILES)
         if form.is_valid():
             user = form.save()
 

@@ -26,7 +26,7 @@ class RegistrarForm(forms.ModelForm):
         return user
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email','foto']
 
 class PasswordResetForm(forms.Form):
     email = forms.EmailField(label='E-mail')

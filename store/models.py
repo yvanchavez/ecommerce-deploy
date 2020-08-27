@@ -113,13 +113,13 @@ class Order(models.Model):
                 shipping = True
         return shipping
 
-
+    @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
 
-    get_cart_total.short_description = 'Monto Total'
+
 
     @property
     def get_cart_items(self):
@@ -153,7 +153,7 @@ class OrderItem(models.Model):
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    order = models.OneToOneField(Order, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     direccion = models.CharField(max_length=200, null=False)
     provincia = models.CharField(max_length=200, null=False)
     distrito = models.CharField(max_length=200, null=False)

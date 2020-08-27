@@ -1,11 +1,11 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="row">
-    <div class="col-md-6 mx-auto contenedor-auth text-center">
-        <h3>Regístrate</h3>
+<div class="row my-1">
+    <div class="col-md-6 mx-auto contenedor-auth text-center " style="height:500px">
+        <h3 class="mt-2">Regístrate</h3>
         <p>Regístrate y recibe cupones y ofertas</p>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
 
@@ -18,11 +18,17 @@
                        placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="id_password1" name="password1" aria-describedby="emailHelp"
+                <input type="password" class="form-control" id="id_password1" name="password1"
+                       aria-describedby="emailHelp"
                        placeholder="Password">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="id_password2" name="password2" placeholder="Confirmar password">
+                <input type="password" class="form-control" id="id_password2" name="password2"
+                       placeholder="Confirmar password">
+            </div>
+            <div class="form-group">
+                <label for="id_foto">Sube tu foto de perfil:</label>
+                <input type="file" class="form-control-file" id="id_foto" name="foto">
             </div>
 
             <button type="submit" class="btn btn-success btn-block mb-5">Registrarse</button>

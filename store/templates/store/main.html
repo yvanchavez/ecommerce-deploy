@@ -68,7 +68,7 @@
     </div>
 
     <ul class="nav-links">
-        <li><a href="">Inicio</a></li>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
         <li><a href="">Perros</a></li>
         <li><a href="">Gatos</a></li>
         {% if user.is_superuser %}
@@ -91,7 +91,7 @@
     </span>
     <span class="carrito">
         <a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a>
-        {% if cartItems %}<p id="cart-total">{{cartItems}}</p>{% else %}<p id="cart-total">0</p>{% endif %}
+        <p id="cart-total" class="mt-2">{{cartItems}}</p>
     </span>
 
     <div class="burger">

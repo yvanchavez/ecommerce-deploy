@@ -85,24 +85,36 @@ nav{
 .logo a{
     text-decoration:none;
     color:white;
+    transition:.5s;
 }
+
+.logo a:hover{
+   color: #1F2F7D;
+}
+
 .carrito{
     display :flex;
 }
 .carrito a{
     color:white;
-    font-size: 20px;
+    font-size: 30px;
     margin-right:9px;
+    transition:.5s;
 }
+
+.carrito a:hover{
+   color: #1F2F7D;
+}
+
 #cart-total{
 	display: block;
 	text-align: center;
 	color:#fff;
 	background-color: #FE490C;
-	width: 25px;
-	height: 25px;
+	width: 28px;
+	height: 28px;
 	border-radius: 50%;
-	font-size: 14px;
+	font-size: 18px;
 }
 .login {
  display:flex;
@@ -117,6 +129,11 @@ nav{
     text-decoration: none;
     font-size: 18px;
     margin:0 30px ;
+    transition:.5s;
+}
+.login a:hover{
+    color: #1F2F7D;
+
 }
 
 .login i{
@@ -139,7 +156,12 @@ nav{
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
+    transition:.5s;
+}
+
+.nav-links a:hover{
+   color: #1F2F7D;
 }
 
 .burger{

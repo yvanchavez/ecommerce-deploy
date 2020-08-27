@@ -14,6 +14,10 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [
         OrderItemInline,ShippingAddressInline
     ]
+    def get_cart_total(self, object):
+        return object.get_cart_total
+
+    get_cart_total.short_description = "Total"
 
 
 
